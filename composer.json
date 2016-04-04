@@ -1,0 +1,30 @@
+{
+    "name": "ddeboer/headers",
+    "description": "A PHP library for working with HTTP and mail message headers",
+    "authors": [
+        {
+            "name": "David de Boer",
+            "email": "david@ddeboer.nl"
+        },
+        {
+            "name": "Ivo Bathke",
+            "email": "ivo.bathke@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~4.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Ivoba\\Headers\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Ivoba\\Headers\\Test\\": "tests"
+        }
+    }
+}
