@@ -2,6 +2,9 @@
 
 A PHP library for working with HTTP and mail headers
 
+[![Build Status](http://img.shields.io/travis/ivoba/headers.svg)](https://travis-ci.org/ivoba/headers)
+
+
 ## Install
 
     composer require ivoba/headers
