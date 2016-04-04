@@ -1,5 +1,5 @@
 {
-    "name": "ddeboer/headers",
+    "name": "ivoba/headers",
     "description": "A PHP library for working with HTTP and mail message headers",
     "authors": [
         {
