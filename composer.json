@@ -1,6 +1,7 @@
 {
     "name": "ivoba/headers",
     "description": "A PHP library for working with HTTP and mail message headers",
+    "licence": "MIT",
     "authors": [
         {
             "name": "David de Boer",
