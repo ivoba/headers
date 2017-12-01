@@ -19,7 +19,8 @@ class HeaderCollection extends Collection
     /**
      * Create a header collection from a headers string
      *
-     * @param string $headers Headers string
+     * @param $headers
+     * @return static
      */
     public static function fromString($headers)
     {
@@ -60,7 +61,7 @@ class HeaderCollection extends Collection
                 if (isset($key)) {
                     $value = trim($line);
                     if (is_array($headers[$key])) {
-                        $headers[$key][] = array_pop($headers[$key]) . $value;
+                        $headers[$key][] = array_pop($headers[$key]).$value;
                     } else {
                         $headers[$key] .= $value;
                     }
@@ -72,6 +73,8 @@ class HeaderCollection extends Collection
     }
 
     /**
+     * HTTP header names are case-insensitive, according to RFC 2616
+     *
      * @param $key
      * @return string
      */
@@ -79,4 +82,18 @@ class HeaderCollection extends Collection
     {
         return strtolower($key);
     }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        $headers = '';
+        foreach ($this as $key => $value) {
+            $headers .= $key.': '.$value."\r\n";
+        }
+
+        return $headers;
+    }
+
 }

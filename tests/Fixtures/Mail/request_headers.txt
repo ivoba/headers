@@ -1,0 +1,8 @@
+POST /Bang HTTP/1.1
+Host: www.url.com:3111
+Connection: Keep-Alive
+User-Agent: PHP-SOAP/soap-bundle
+Accept-Encoding: gzip, deflate
+Content-Type: text/xml; charset=utf-8
+SOAPAction: "SomeAction"
+Content-Length: 1348
