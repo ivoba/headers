@@ -19,6 +19,8 @@ A PHP library for working with HTTP and mail headers
      Date: Tue, 28 Nov 2017 16:08:41 GMT'
     );
     
+    $reason = $headers->getStatusLine()->get(StatusLine::REASON_PHRASE);
+    
     
 ## Tests
 Install the dependencies via composer and run
