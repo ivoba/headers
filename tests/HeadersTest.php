@@ -10,9 +10,9 @@ class HeadersTest extends \PHPUnit_Framework_TestCase
 
         $headers = Headers::fromString($string);
 
-        $this->assertInstanceOf(Headers::class, $headers);
-        $this->assertInstanceOf(StatusLine::class, $headers->getStatusLine());
-        $this->assertInstanceOf(HeaderCollection::class, $headers->getHeaders());
+        $this->assertInstanceOf('Ivoba\Headers\Headers', $headers);
+        $this->assertInstanceOf('Ivoba\Headers\StatusLine', $headers->getStatusLine());
+        $this->assertInstanceOf('Ivoba\Headers\HeaderCollection', $headers->getHeaders());
         $this->assertEquals('POST', $headers->getStatusLine()->get(StatusLine::METHOD));
         $this->assertEquals('/Bang', $headers->getStatusLine()->get(StatusLine::REQUEST_URI));
         $this->assertEquals('HTTP/1.1', $headers->getStatusLine()->get(StatusLine::HTTP_VERSION));
@@ -28,9 +28,9 @@ class HeadersTest extends \PHPUnit_Framework_TestCase
 
         $headers = Headers::fromString($string);
 
-        $this->assertInstanceOf(Headers::class, $headers);
-        $this->assertInstanceOf(StatusLine::class, $headers->getStatusLine());
-        $this->assertInstanceOf(HeaderCollection::class, $headers->getHeaders());
+        $this->assertInstanceOf('Ivoba\Headers\Headers', $headers);
+        $this->assertInstanceOf('Ivoba\Headers\StatusLine', $headers->getStatusLine());
+        $this->assertInstanceOf('Ivoba\Headers\HeaderCollection', $headers->getHeaders());
         $this->assertEquals('HTTP/1.1', $headers->getStatusLine()->get(StatusLine::HTTP_VERSION));
         $this->assertEquals('200', $headers->getStatusLine()->get(StatusLine::STATUS_CODE));
         $this->assertEquals('OK', $headers->getStatusLine()->get(StatusLine::REASON_PHRASE));
