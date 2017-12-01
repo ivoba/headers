@@ -9,6 +9,17 @@ A PHP library for working with HTTP and mail headers
 
     composer require ivoba/headers
     
+## Usage 
+
+    $headers = Headers::fromString(
+    'HTTP/1.1 200 OK
+     Content-Length: 782420
+     Content-Type: text/xml; charset=utf-8
+     Server: Microsoft-HTTPAPI/2.0
+     Date: Tue, 28 Nov 2017 16:08:41 GMT'
+    );
+    
+    
 ## Tests
 Install the dependencies via composer and run
 
