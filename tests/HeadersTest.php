@@ -2,7 +2,9 @@
 
 namespace Ivoba\Headers;
 
-class HeadersTest extends \PHPUnit_Framework_TestCase
+use PHPUnit\Framework\TestCase;
+
+class HeadersTest extends TestCase
 {
     public function testFromRequestHeaders()
     {
@@ -38,5 +40,15 @@ class HeadersTest extends \PHPUnit_Framework_TestCase
         $this->assertNull($headers->getHeaders()->get('asdasd'));
         $this->assertEquals('782420', $headers->getHeaders()->get('content-length'));
         $this->assertEquals('Microsoft-HTTPAPI/2.0', $headers->getHeaders()->get('server'));
+    }
+
+    /**
+     * assure it doesnt break when an empty header string is passed
+     */
+    public function testNullHeaders()
+    {
+        $headersString = null;
+        $headers       = Headers::fromString($headersString);
+        $this->assertNull($headers->getHeaders()->get('from'));
     }
 }

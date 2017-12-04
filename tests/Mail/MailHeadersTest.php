@@ -4,8 +4,9 @@ namespace Ivoba\Header\Test\Mail;
 
 use Ivoba\Headers\HeaderCollection;
 use Ivoba\Headers\Mail\MailHeaders;
+use PHPUnit\Framework\TestCase;
 
-class MailHeadersTest extends \PHPUnit_Framework_TestCase
+class MailHeadersTest extends TestCase
 {
     public function testHeadersFromGmailMessage()
     {

@@ -13,10 +13,10 @@
         }
     ],
     "require": {
-        "php": ">=5.3"
+        "php": ">=7.1"
     },
     "require-dev": {
-        "phpunit/phpunit": "~4.5"
+        "phpunit/phpunit": "~6"
     },
     "autoload": {
         "psr-4": {
@@ -26,6 +26,11 @@
     "autoload-dev": {
         "psr-4": {
             "Ivoba\\Headers\\Test\\": "tests"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "2.0-dev"
         }
     }
 }

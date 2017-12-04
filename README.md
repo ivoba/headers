@@ -9,6 +9,8 @@ A PHP library for working with HTTP and mail headers
 
     composer require ivoba/headers
     
+Version 2 requires minimum PHP7.1.
+    
 ## Usage 
 
     $headers = Headers::fromString(

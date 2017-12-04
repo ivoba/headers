@@ -7,22 +7,12 @@ namespace Ivoba\Headers;
  */
 class HeaderCollection extends Collection
 {
-    /**
-     * @param $key
-     * @return null
-     */
-    public function get($key)
+    public function get(string $key)
     {
         return parent::get(self::normalizeKey($key));
     }
 
-    /**
-     * Create a header collection from a headers string
-     *
-     * @param $headers
-     * @return static
-     */
-    public static function fromString($headers)
+    public static function fromString(?string $headers): self
     {
         return new static(self::parseHeaders($headers));
     }
@@ -31,13 +21,12 @@ class HeaderCollection extends Collection
      * Parse headers into key/value pairs
      *
      * @param string $headers Unparsed headers as string
-     *
      * @return array Parsed headers
      */
-    protected static function parseHeaders($headers)
+    protected static function parseHeaders(?string $headers): array
     {
         $lines   = preg_split('/\\r?\\n/', $headers);
-        $headers = array();
+        $headers = [];
         foreach ($lines as $line) {
             if (preg_match('/^[\S|\T]/', $line)) {
                 // Start of new header field: this line must contain a colon
@@ -75,10 +64,10 @@ class HeaderCollection extends Collection
     /**
      * HTTP header names are case-insensitive, according to RFC 2616
      *
-     * @param $key
+     * @param string $key
      * @return string
      */
-    protected static function normalizeKey($key)
+    protected static function normalizeKey(string $key): string
     {
         return strtolower($key);
     }

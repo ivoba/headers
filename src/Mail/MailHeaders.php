@@ -12,50 +12,32 @@ use Ivoba\Headers\HeaderCollection;
  */
 class MailHeaders extends HeaderCollection
 {
-    /**
-     * @return null
-     */
-    public function getMessageId()
+    public function getMessageId(): ?string
     {
         return $this->get('message-id');
     }
 
-    /**
-     * @return null
-     */
-    public function getTo()
+    public function getTo(): ?string
     {
         return $this->get('to');
     }
 
-    /**
-     * @return null
-     */
-    public function getFrom()
+    public function getFrom(): ?string
     {
         return $this->get('from');
     }
 
-    /**
-     * @return null
-     */
-    public function getSubject()
+    public function getSubject(): ?string
     {
         return $this->get('subject');
     }
 
-    /**
-     * @return \DateTime
-     */
-    public function getDate()
+    public function getDate(): \DateTime
     {
         return new \DateTime($this->get('date'));
     }
 
-    /**
-     * @return null
-     */
-    public function getContentType()
+    public function getContentType(): ?string
     {
         return $this->get('content-type');
     }

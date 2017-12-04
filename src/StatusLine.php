@@ -9,17 +9,13 @@ namespace Ivoba\Headers;
 class StatusLine extends Collection
 {
 
-    const HTTP_VERSION = 'http-version';
-    const STATUS_CODE = 'status-code';
-    const REASON_PHRASE = 'reason-phrase';
-    const METHOD = 'method';
-    const REQUEST_URI = 'request-uri';
+    public const HTTP_VERSION = 'http-version';
+    public const STATUS_CODE = 'status-code';
+    public const REASON_PHRASE = 'reason-phrase';
+    public const METHOD = 'method';
+    public const REQUEST_URI = 'request-uri';
 
-    /**
-     * @param string $line
-     * @return StatusLine
-     */
-    public static function fromString($line)
+    public static function fromString(?string $line): self
     {
         return new static(self::parseStatusLine($line));
     }
@@ -31,9 +27,9 @@ class StatusLine extends Collection
      * @param string $line
      * @return array
      */
-    public static function parseStatusLine($line)
+    public static function parseStatusLine(?string $line): array
     {
-        $statusLine = array();
+        $statusLine = [];
         $lineArray  = explode(' ', trim($line), 3);
 
         if (count($lineArray) > 1) {

@@ -7,41 +7,27 @@ namespace Ivoba\Headers;
  */
 class Collection implements \IteratorAggregate
 {
-
     /**
      * @var array
      */
     private $data;
 
-    /**
-     * @param array $data
-     */
-    public function __construct(array $data = null)
+    public function __construct(array $data = [])
     {
         $this->data = $data;
     }
 
-    /**
-     * @return \ArrayIterator
-     */
-    public function getIterator()
+    public function getIterator(): \ArrayIterator
     {
         return new \ArrayIterator($this->data);
     }
 
-    /**
-     * @param $key
-     * @return null
-     */
-    public function get($key)
+    public function get(string $key)
     {
         return isset($this->data[$key]) ? $this->data[$key] : null;
     }
 
-    /**
-     * @return array
-     */
-    public function toArray()
+    public function toArray(): array
     {
         return $this->data;
     }

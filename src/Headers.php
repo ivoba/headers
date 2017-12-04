@@ -4,57 +4,40 @@ namespace Ivoba\Headers;
 
 class Headers
 {
-    const STATUS_LINE = 'status-line';
-    const HEADER_FIELDS = 'header-fields';
+    public const STATUS_LINE = 'status-line';
+    public const HEADER_FIELDS = 'header-fields';
 
     private $statusLine;
     private $headers;
 
-    /**
-     * Headers constructor.
-     * @param $statusLine
-     * @param $headers
-     */
     public function __construct(StatusLine $statusLine, HeaderCollection $headers)
     {
         $this->statusLine = $statusLine;
         $this->headers    = $headers;
     }
 
-    /**
-     * @param $headersString
-     * @return bool|string
-     */
-    public static function getStatusLineFromHeaders($headersString)
+    public static function getStatusLineFromHeaders(?string $headersString): string
     {
-        return substr($headersString, 0, strpos($headersString, "\n"));
+        $line = substr($headersString, 0, strpos($headersString, "\n"));
+
+        return $line ? $line : '';
     }
 
-    /**
-     * @param $headersString
-     * @return bool|string
-     */
-    public static function removeStatusLineFromHeaders($headersString)
+    public static function removeStatusLineFromHeaders(?string $headersString): string
     {
-        return substr($headersString, strpos($headersString, "\n") + 1);
+        $headers = substr($headersString, strpos($headersString, "\n") + 1);
+
+        return $headers ? $headers : '';
     }
 
-    /**
-     * @param $headersString
-     * @return Headers
-     */
-    public static function fromString($headersString)
+    public static function fromString(?string $headersString): self
     {
         $headersArray = self::parse($headersString);
 
         return new self($headersArray[self::STATUS_LINE], $headersArray[self::HEADER_FIELDS]);
     }
 
-    /**
-     * @param $headersString
-     * @return array
-     */
-    public static function parse($headersString)
+    public static function parse(?string $headersString): array
     {
         $headers                      = array();
         $statusLine                   = self::getStatusLineFromHeaders($headersString);
@@ -64,10 +47,7 @@ class Headers
         return $headers;
     }
 
-    /**
-     * @return array
-     */
-    public function toArray()
+    public function toArray(): array
     {
         return array(
             self::STATUS_LINE   => $this->getStatusLine()->toArray(),
@@ -83,18 +63,12 @@ class Headers
         return $this->statusLine->__toString()."\r\n".$this->headers->__toString();
     }
 
-    /**
-     * @return StatusLine
-     */
-    public function getStatusLine()
+    public function getStatusLine(): StatusLine
     {
         return $this->statusLine;
     }
 
-    /**
-     * @return HeaderCollection
-     */
-    public function getHeaders()
+    public function getHeaders(): HeaderCollection
     {
         return $this->headers;
     }
