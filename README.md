@@ -21,7 +21,8 @@ Version 2 requires minimum PHP7.1.
      Date: Tue, 28 Nov 2017 16:08:41 GMT'
     );
     
-    $reason = $headers->getStatusLine()->get(StatusLine::REASON_PHRASE);
+    $reason = $headers->getStatusLine()->get(StatusLine::REASON_PHRASE); //OK
+    $server = $headers->getHeaders()->get('server'); //Microsoft-HTTPAPI/2.0
     
     
 ## Tests

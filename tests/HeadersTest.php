@@ -8,7 +8,7 @@ class HeadersTest extends TestCase
 {
     public function testFromRequestHeaders()
     {
-        $string  = file_get_contents(__DIR__ . '/Fixtures/Mail/request_headers.txt');
+        $string  = file_get_contents(__DIR__ . '/Fixtures/request_headers.txt');
 
         $headers = Headers::fromString($string);
 
@@ -26,7 +26,7 @@ class HeadersTest extends TestCase
 
     public function testFromResponseHeaders()
     {
-        $string  = file_get_contents(__DIR__ . '/Fixtures/Mail/response_headers.txt');
+        $string  = file_get_contents(__DIR__ . '/Fixtures/response_headers.txt');
 
         $headers = Headers::fromString($string);
 
