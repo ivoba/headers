@@ -7,14 +7,8 @@ namespace Ivoba\Headers;
  */
 class Collection implements \IteratorAggregate
 {
-    /**
-     * @var array
-     */
-    private $data;
-
-    public function __construct(array $data = [])
+    public function __construct(private readonly array $data = [])
     {
-        $this->data = $data;
     }
 
     public function getIterator(): \ArrayIterator
@@ -24,7 +18,7 @@ class Collection implements \IteratorAggregate
 
     public function get(string $key)
     {
-        return isset($this->data[$key]) ? $this->data[$key] : null;
+        return $this->data[$key] ?? null;
     }
 
     public function toArray(): array

@@ -24,7 +24,7 @@ class StatusLine extends Collection
      * Status-Line = HTTP-Version SP Status-Code SP Reason-Phrase CRLF
      * in HTTP/2 Reason-Phrase was removed
      *
-     * @param string $line
+     * @param string|null $line
      * @return array
      */
     public static function parseStatusLine(?string $line): array
@@ -35,11 +35,9 @@ class StatusLine extends Collection
         if (count($lineArray) > 1) {
             if (is_numeric($lineArray[1])) {
                 //response
+                $statusLine[self::STATUS_CODE] = $lineArray[1];
                 if (isset($lineArray[0])) {
                     $statusLine[self::HTTP_VERSION] = $lineArray[0];
-                }
-                if (isset($lineArray[1])) {
-                    $statusLine[self::STATUS_CODE] = $lineArray[1];
                 }
                 if (isset($lineArray[2])) {
                     $statusLine[self::REASON_PHRASE] = $lineArray[2];

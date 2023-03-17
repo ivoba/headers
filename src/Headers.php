@@ -7,27 +7,22 @@ class Headers
     public const STATUS_LINE = 'status-line';
     public const HEADER_FIELDS = 'header-fields';
 
-    private $statusLine;
-    private $headers;
-
-    public function __construct(StatusLine $statusLine, HeaderCollection $headers)
+    public function __construct(private readonly StatusLine $statusLine, private readonly HeaderCollection $headers)
     {
-        $this->statusLine = $statusLine;
-        $this->headers    = $headers;
     }
 
     public static function getStatusLineFromHeaders(?string $headersString): string
     {
         $line = substr($headersString, 0, strpos($headersString, "\n"));
 
-        return $line ? $line : '';
+        return $line ?: '';
     }
 
     public static function removeStatusLineFromHeaders(?string $headersString): string
     {
         $headers = substr($headersString, strpos($headersString, "\n") + 1);
 
-        return $headers ? $headers : '';
+        return $headers ?: '';
     }
 
     public static function fromString(?string $headersString): self

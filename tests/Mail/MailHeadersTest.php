@@ -14,12 +14,12 @@ class MailHeadersTest extends TestCase
         $headers = MailHeaders::fromString($string);
         $this->assertEquals('jamesbond@gmail.com', $headers->get('delivered-to'));
         $this->assertEquals('Q <q@gmail.com>', $headers->get('from'));
-        $this->assertInternalType('array', $headers->get('received'));
+        $this->assertIsArray($headers->get('received'));
 
         $this->assertInstanceOf('\DateTime', $headers->getDate());
 
         $array = $headers->toArray();
-        $this->assertInternalType('array', $array);
+        $this->assertIsArray($array);
         $this->assertArrayHasKey('from', $array);
     }
 

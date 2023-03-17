@@ -20,7 +20,7 @@ class HeaderCollection extends Collection
     /**
      * Parse headers into key/value pairs
      *
-     * @param string $headers Unparsed headers as string
+     * @param string|null $headers Unparsed headers as string
      * @return array Parsed headers
      */
     protected static function parseHeaders(?string $headers): array
