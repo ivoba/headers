@@ -2,7 +2,7 @@
 
 A PHP library for working with HTTP and mail headers
 
-[![Build Status](http://img.shields.io/travis/ivoba/headers.svg)](https://travis-ci.org/ivoba/headers)
+[![Build Status](https://img.shields.io/github/actions/workflow/status/ivoba/headers/test.yml?style=flat-square)](https://github.com/ivoba/headers/actions)
 
 
 ## Install
