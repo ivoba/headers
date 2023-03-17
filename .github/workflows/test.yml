@@ -1,4 +1,4 @@
-name: soap-client-bundle
+name: headers
 
 on:
     pull_request: ~
@@ -7,16 +7,28 @@ on:
             - master
 
 jobs:
-    coding-style:
+    tests-php-7-1:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v2
             - uses: shivammathur/setup-php@v2
               with:
-                  php-version: '7.4'
-            - name: php-cs-fixer
+                  php-version: '7.1'
+            - name: PHPUnit
               run: |
-                  composer install -n --prefer-dist
+                  composer update --prefer-dist --no-interaction --no-ansi --no-progress
+                  php vendor/bin/phpunit --coverage-text --coverage-clover=coverage.clover
+    tests-php-7-2:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v2
+            - uses: shivammathur/setup-php@v2
+              with:
+                  php-version: '7.2'
+            - name: PHPUnit
+              run: |
+                  composer update --prefer-dist --no-interaction --no-ansi --no-progress
+                  php vendor/bin/phpunit --coverage-text --coverage-clover=coverage.clover
     tests-php-7-4:
         runs-on: ubuntu-latest
         steps:
