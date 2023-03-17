@@ -1,0 +1,30 @@
+name: soap-client-bundle
+
+on:
+    pull_request: ~
+    push:
+        branches:
+            - master
+
+jobs:
+    coding-style:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v2
+            - uses: shivammathur/setup-php@v2
+              with:
+                  php-version: '7.4'
+            - name: php-cs-fixer
+              run: |
+                  composer install -n --prefer-dist
+    tests-php-7-4:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v2
+            - uses: shivammathur/setup-php@v2
+              with:
+                  php-version: '7.4'
+            - name: PHPUnit
+              run: |
+                  composer update --prefer-dist --no-interaction --no-ansi --no-progress
+                  php vendor/bin/phpunit --coverage-text --coverage-clover=coverage.clover
